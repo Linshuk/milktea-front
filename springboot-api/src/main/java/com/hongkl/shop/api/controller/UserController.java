@@ -1,6 +1,7 @@
 package com.hongkl.shop.api.controller;
 
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.hongkl.shop.exception.YamiShopBindException;
@@ -17,10 +18,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -78,8 +76,24 @@ public class UserController {
     }
 
 
+    @PutMapping("/updatePwd")
+    public ServerResponseEntity<Void> updatePwd(@Valid @RequestBody UserRegisterParam param){
+        // 查询用户
+        User user = userService.getOne(new LambdaQueryWrapper<User>().eq(User::getNickName, param.getNickName()));
+        if (ObjectUtil.isEmpty(user)) throw new YamiShopBindException("无法获取该用户信息");
+
+        String decryptPassword = passwordManager.decryptPassword(param.getPassWord());
+        if (StrUtil.isBlank(decryptPassword)) throw new YamiShopBindException("新密码不能为空");
+
+        String newPwd = passwordEncoder.encode(decryptPassword);
+        if (StrUtil.equals(newPwd,user.getLoginPassword())) throw new YamiShopBindException("新旧密码不能相同");
+
+        user.setModifyTime(new Date());
+        user.setLoginPassword(newPwd);
+        userService.updateById(user);
+        return ServerResponseEntity.success();
 
 
-
+    }
 
 }

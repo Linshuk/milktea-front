@@ -5,6 +5,9 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  main:
+    allow-circular-references: true
+
 # mybaits-plus配置
 mybatis-plus:
   # MyBatis Mapper所对应的XML文件位置
