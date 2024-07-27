@@ -15,9 +15,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hongkl.shop.model.User;
 import org.apache.ibatis.annotations.Param;
 
-/**
- * @author lanhai
- */
+
 public interface UserMapper extends BaseMapper<User> {
 
 	/**

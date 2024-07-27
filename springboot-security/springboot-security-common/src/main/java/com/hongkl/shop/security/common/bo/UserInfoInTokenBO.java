@@ -16,8 +16,6 @@ import java.util.Set;
 /**
  * 保存在token信息里面的用户信息
  *
- * @author 菠萝凤梨
- * @date 2022/3/25 17:33
  */
 @Data
 public class UserInfoInTokenBO {

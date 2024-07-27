@@ -15,8 +15,6 @@ import lombok.Data;
 /**
  * token信息，该信息用户返回给前端，前端请求携带accessToken进行用户校验
  *
- * @author FrozenWatermelon
- * @date 2020/7/2
  */
 @Data
 public class TokenInfoVO {

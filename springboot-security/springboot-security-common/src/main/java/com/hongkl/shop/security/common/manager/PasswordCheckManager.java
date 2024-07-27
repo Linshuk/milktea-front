@@ -18,10 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-/**
- * @date 2022/3/25 17:33
- * @author lh
- */
 @Component
 public class PasswordCheckManager {
 

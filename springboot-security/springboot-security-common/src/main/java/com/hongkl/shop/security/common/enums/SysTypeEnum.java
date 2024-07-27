@@ -11,8 +11,6 @@ package com.hongkl.shop.security.common.enums;
 
 /**
  * 系统类型
- * @author 菠萝凤梨
- * @date 2022/3/25 17:33
  */
 public enum SysTypeEnum {
 

@@ -16,8 +16,6 @@ import lombok.Data;
 /**
  * 用于登陆传递账号密码
  *
- * @author 菠萝凤梨
- * @date 2022/3/25 17:33
  */
 @Data
 public class AuthenticationDTO {

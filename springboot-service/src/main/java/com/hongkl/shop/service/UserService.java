@@ -14,10 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.hongkl.shop.model.User;
 import com.hongkl.shop.params.UserRegisterParam;
 
-/**
- *
- * @author lgh on 2018/09/11.
- */
+
 public interface UserService extends IService<User> {
     /**
      * 根据用户id获取用户信息
